@@ -1,13 +1,6 @@
-import React from 'react'
-import useLocalStorage from '../../hooks/useLocalStorage';
-import { localStorageKeyName } from '../../constants';
 import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
-
-export const useAuth = () => {
-    const userData = useLocalStorage().getLocalStorage(localStorageKeyName)
-    return userData;
-};
 
 
 export const ProtectedRoute = () => {

@@ -87,7 +87,7 @@ export const Signup = () => {
 
     const mutation = useMutation({
         mutationFn: async (values: SignupPayload) => {
-            const data = await signupRequest(values)
+            const data: any = await signupRequest(values)
             if (data?.jwt) {
                 createOrUpdateLocalStorage(localStorageKeyName, data)
                 navigateTo("/")
@@ -120,7 +120,7 @@ export const Signup = () => {
                             {mutation.isError &&
                                 <Alert variant="destructive" className='p-1'>
                                     <AlertDescription>
-                                        {mutation.error?.response?.data?.error.message}
+                                        {(mutation.error as any)?.response?.data?.error.message ?? (mutation.error as any)?.response?.data}
                                     </AlertDescription>
                                 </Alert>
                             }

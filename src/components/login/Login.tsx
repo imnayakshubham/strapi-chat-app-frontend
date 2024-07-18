@@ -64,11 +64,11 @@ export const Login = () => {
 
     const mutation = useMutation({
         mutationFn: async (values: LoginPayload) => {
-            const payload = {
+            const payload: any = {
                 identifier: values.email,
                 password: values.password
             }
-            const data: unknown = await loginRequest(payload)
+            const data: any = await loginRequest(payload)
             if (data?.jwt) {
                 createOrUpdateLocalStorage(localStorageKeyName, data)
                 navigateTo("/")
@@ -95,7 +95,7 @@ export const Login = () => {
                             {mutation.isError &&
                                 <Alert variant="destructive" className='p-1'>
                                     <AlertDescription>
-                                        {mutation.error?.response?.data?.error?.message ?? mutation.error?.response?.data}
+                                        {(mutation.error as any)?.response?.data?.error?.message ?? (mutation.error as any)?.response?.data}
                                     </AlertDescription>
                                 </Alert>
                             }

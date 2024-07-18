@@ -1,10 +1,10 @@
 // Username: demo_user
 
 import { useEffect, useState } from "react";
-import { useAuth } from "../ProtectedRoute/ProtectedRoute";
 import io from 'socket.io-client';
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { localStorageKeyName } from "../../constants";
+import { useAuth } from "../../hooks/useAuth";
 
 type Message = {
     message: string,
@@ -12,8 +12,7 @@ type Message = {
     sender_id: string | number,
 }
 
-
-const socket = io('http://localhost:1337');
+const socket = io(import.meta.env.VITE_STRAPI_API_END_POINT);
 
 export const ChatContainer = () => {
 
