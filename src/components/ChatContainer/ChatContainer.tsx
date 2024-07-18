@@ -12,7 +12,9 @@ type Message = {
     sender_id: string | number,
 }
 
-const socket = io(import.meta.env.VITE_STRAPI_API_END_POINT);
+const socket = io(import.meta.env.VITE_STRAPI_API_END_POINT, {
+    transports: ['websocket']
+});
 
 export const ChatContainer = () => {
 
